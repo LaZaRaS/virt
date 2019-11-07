@@ -1,9 +1,5 @@
-FROM busybox:latest
+FROM alpine:latest
 
-ADD 1.html /www/1.html
+COPY ind.html /var/www/html/
 
-EXPOSE 8000
-HEALTHCHECK CMD nc -z localhost 8000
 
-# Create a basic webserver and run it until the container is stopped
-CMD trap "exit 0;" TERM INT; httpd -p 8000 -h /www -f & wait
